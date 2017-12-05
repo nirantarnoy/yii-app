@@ -63,8 +63,10 @@
                         'icon' => 'arrow-down',
                         'url' => '#',
                         'items' => [
-                            ['label' => 'การเบิกสารเคมี', 'icon' => 'folder-open', 'url' => ['/StockManagement/requisition'],],
-                            ['label' => 'การคืนสารเคมี', 'icon' => 'folder-open', 'url' => ['/StockManagement/repatriate'],],
+                            // ['label' => 'การเบิกสารเคมี', 'icon' => 'folder-open', 'url' => ['/StockManagement/requisition'],],
+                            // ['label' => 'การคืนสารเคมี', 'icon' => 'folder-open', 'url' => ['/StockManagement/repatriate'],],
+                              ['label' => 'การเบิกสารเคมี', 'icon' => 'folder-open', 'url' => ['/Journal/issue'],],
+                            ['label' => 'การคืนสารเคมี', 'icon' => 'folder-open', 'url' => ['/Journal/return'],],
               
                         ],
                     ],

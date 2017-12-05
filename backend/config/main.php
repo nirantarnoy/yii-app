@@ -27,6 +27,9 @@ return [
          'webservice' => [
             'class' => 'backend\modules\webservice\module',
         ],
+         'Journal' => [
+            'class' => 'backend\modules\Journal\module',
+        ],
     
         
     ],

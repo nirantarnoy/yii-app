@@ -78,4 +78,8 @@ class Chemical extends \yii\db\ActiveRecord
     {
         return $this->hasMany(Item::className(), ['chemical_ID' => 'chemical_ID']);
     }
+    public static function getName($id){
+        $model = Chemical::find()->where(['chemical_ID'=>$id])->one();
+        return count($model)>0?$model->chemical_name:'';
+    }
 }
