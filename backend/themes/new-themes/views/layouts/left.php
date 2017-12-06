@@ -45,6 +45,7 @@
                             ['label' => 'ห้องเก็บสารเคมี', 'icon' => 'folder-open', 'url' => ['/BasicData/room'],],
                             ['label' => 'หมวดหมู่สารเคมี', 'icon' => 'folder-open', 'url' => ['/BasicData/category'],],
                             ['label' => 'ประเภทสารเคมี', 'icon' => 'folder-open', 'url' => ['/BasicData/type'],],
+                            ['label' => 'หน่วยนับ', 'icon' => 'folder-open', 'url' => ['/Unit/unit'],],
                             
                         ],
                     ],
@@ -75,6 +76,7 @@
                         'icon' => 'arrow-down',
                         'url' => '#',
                         'items' => [
+                            ['label' => 'รายงานประวัติการเบิก', 'icon' => 'line-chart', 'url' => ['/Reports/issuereport'],],
                             ['label' => 'สารเคมีหมดอายุ', 'icon' => 'folder-open', 'url' => ['/ChemicalsManagement/item'],],
                             ['label' => 'สารเคมีใกล้หมดอายุ', 'icon' => 'folder-open', 'url' => ['/ChemicalsManagement/marker'],],
                             ['label' => 'สารเคมีหมดอายุ', 'icon' => 'folder-open', 'url' => ['/ChemicalsManagement/marker'],],

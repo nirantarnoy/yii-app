@@ -30,6 +30,9 @@ return [
          'Journal' => [
             'class' => 'backend\modules\Journal\module',
         ],
+          'Unit' => [
+            'class' => 'backend\modules\Unit\module',
+        ],
     
         
     ],

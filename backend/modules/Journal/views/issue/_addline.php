@@ -18,6 +18,9 @@
 		<input type="text" class="form-control qty" name="qty[]" value="">
 	</td>
 	<td>
+		<input type="text" class="form-control unit" readonly name="unit[]" value="">
+	</td>
+	<td>
 		<div class="btn btn-danger btn-remove-line" onclick="removeline($(this))">ลบ</div>
 	</td>
  </tr>

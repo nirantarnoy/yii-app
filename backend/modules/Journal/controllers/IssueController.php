@@ -177,4 +177,16 @@ class IssueController extends Controller
            return $this->renderPartial('_addline');
         }
     }
+     public function actionFindunit(){
+        if(Yii::$app->request->isAjax){
+           $id = Yii::$app->request->post('ids');
+            if($id){
+                $model = \common\models\Item::find()->where(['chemical_ID'=>$id])->one();
+                if($model){
+                    return \backend\modules\Unit\models\unit::getUnitname($model->unit_id);
+                }
+            }
+           return '';
+        }
+    }
 }

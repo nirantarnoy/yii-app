@@ -127,6 +127,10 @@ use yii\helpers\ArrayHelper;
                                             <input type="text" class="form-control return_qty" name="return_qty[]" value="<?=$value->return_qty;?>">
                                         </td>
                                         <td>
+                                          <?php $unit_id = \common\models\Item::getUnitid($value->chemical_id) ?>
+                                            <input type="text" class="form-control unit" name="unit[]" readonly value="<?=\backend\modules\Unit\models\unit::getUnitname($unit_id)?>">
+                                        </td>
+                                        <td>
                                             <div class="btn btn-danger btn-remove-line" onclick="removeline($(this))">ลบ</div>
                                         </td>
                                      </tr>

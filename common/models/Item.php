@@ -45,7 +45,7 @@ class Item extends \yii\db\ActiveRecord
     {
         return [
             [['location', 'status', 'size', 'Remaining_volume', 'opendate', 'worningdate', 'room_id', 'chemical_ID', 'grade_id', 'marker_id', 'user_id'], 'required'],
-            [['Remaining_volume', 'room_id', 'chemical_ID', 'grade_id', 'marker_id', 'user_id'], 'integer'],
+            [['Remaining_volume', 'room_id', 'chemical_ID', 'grade_id', 'marker_id', 'user_id','unit_id'], 'integer'],
             [['opendate', 'worningdate', 'expireddate'], 'safe'],
             [['location'], 'string', 'max' => 200],
             [['status'], 'string', 'max' => 100],
@@ -77,6 +77,7 @@ class Item extends \yii\db\ActiveRecord
             'grade_id' => 'รหัสเกรด',
             'marker_id' => 'รหัสMarker',
             'user_id' => 'รหัสผู้ใช้',
+            'unit_id' => 'หน่วยนับ',
         ];
     }
 
@@ -127,4 +128,9 @@ class Item extends \yii\db\ActiveRecord
     {
         return $this->hasOne(ItemHasRequisition::className(), ['item_ID' => 'item_ID']);
     }
+    public static function getUnitid($item){
+      $model = Item::find()->where(['chemical_ID'=>$item])->one();
+      return count($model)>0?$model->unit_id:0;
+    }
+
 }

@@ -67,6 +67,7 @@ use kartik\date\DatePicker;
                                    <th>ชื่อเคมี</th>
                                    <th>วิธีเบิก</th>
                                    <th>ปริมาณเคมี</th>
+                                   <th>หน่วยนับ</th>
                                    <th></th>
                                 </tr>
                             </thead>
@@ -106,6 +107,10 @@ use kartik\date\DatePicker;
                                         <td>
                                             <input type="text" class="form-control qty" name="qty[]" value="<?=$value->qty;?>">
                                         </td>
+                                         <td>
+                                          <?php $unit_id = \common\models\Item::getUnitid($value->chemical_id) ?>
+                                            <input type="text" class="form-control unit" name="unit[]" readonly value="<?=\backend\modules\Unit\models\unit::getUnitname($unit_id)?>">
+                                        </td>
                                         <td>
                                             <div class="btn btn-danger btn-remove-line" onclick="removeline($(this))">ลบ</div>
                                         </td>
@@ -126,6 +131,7 @@ use kartik\date\DatePicker;
 </div>
 <?php
    $url_to_add_line = Url::to(['issue/addline']);
+   $url_to_findunit = Url::to(['issue/findunit']);
    $this->registerJs('
         $(function(){
             $(".btn-add-line").click(function(){
@@ -165,7 +171,9 @@ use kartik\date\DatePicker;
                                 //$(this).closest("tr").find(".price").val(ui.item.price);
                                 $(this).closest("tr").find(".chemical_id").val(ui.item.value);
                                 $(this).closest("tr").find(".qty").val(1);
-                         
+                                $(this).closest("tr").find(".unit").val(showUnit(ui.item.value));
+                                
+                                 
                                 return false;
                               }
                         });
@@ -180,6 +188,24 @@ use kartik\date\DatePicker;
             if(confirm("ต้องการลบรายการใช่หรือไม่")){
                 e.parent().parent().remove();
             }
+         }
+         function showUnit(id){
+           var name = "niran";
+           if(id != ""){
+                      alert(id);
+              $.ajax({
+                type: "post",
+                dataType: "html",
+                async: false,
+                url: "'.$url_to_findunit.'",
+                data: {ids: id},
+                success: function(data){
+                   name = data;
+                }
+              });
+              return name;
+           }
+           
          }
         
     ',static::POS_END);
