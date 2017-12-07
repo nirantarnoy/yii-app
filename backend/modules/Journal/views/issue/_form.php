@@ -201,7 +201,7 @@ $unit = \common\models\Unit::find()->all();
          function showUnit(id){
            var name = "niran";
            if(id != ""){
-                      alert(id);
+                     // alert(id);
               $.ajax({
                 type: "post",
                 dataType: "html",
