@@ -71,6 +71,7 @@ class IssueController extends Controller
             $che_id = Yii::$app->request->post('chemical_id');
             $issue_type = Yii::$app->request->post('issue_type');
             $qty = Yii::$app->request->post('qty');
+            $unit = Yii::$app->request->post('unit');
             $model->created_at = time();
             $model->created_by = Yii::$app->user->identity->id;
             $model->journal_type = 1;
@@ -82,6 +83,7 @@ class IssueController extends Controller
                         $modelline->chemical_id = $che_id[$i];
                         $modelline->issue_type = $issue_type[$i];
                         $modelline->qty = $qty[$i];
+                        $modelline->unit_id = $unit[$i];
                         $modelline->save(false);
 
                         Journal::updatestock($che_id[$i],$qty[$i],0); // issue
@@ -116,6 +118,7 @@ class IssueController extends Controller
             $che_id = Yii::$app->request->post('chemical_id');
             $issue_type = Yii::$app->request->post('issue_type');
             $qty = Yii::$app->request->post('qty');
+             $unit = Yii::$app->request->post('unit');
             $model->updated_at = time();
             $model->updated_by = Yii::$app->user->identity->id;
             if($model->save()){
@@ -127,6 +130,7 @@ class IssueController extends Controller
                         $modelline->chemical_id = $che_id[$i];
                         $modelline->issue_type = $issue_type[$i];
                         $modelline->qty = $qty[$i];
+                         $modelline->unit_id = $unit[$i];
                         $modelline->save(false);
                     }
                    

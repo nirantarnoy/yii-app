@@ -28,7 +28,7 @@ class JournalLine extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['journal_id', 'chemical_id', 'qty'], 'integer'],
+            [['journal_id', 'chemical_id', 'qty','unit_id'], 'integer'],
         ];
     }
 

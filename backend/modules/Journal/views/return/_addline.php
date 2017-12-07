@@ -37,7 +37,7 @@
         <input type="text" class="form-control return_qty" name="return_qty[]" value="<?=$value->return_qty?>">
     </td>
     <td>
-        <input type="text" class="form-control unit" readonly name="unit[]" value="">
+         <input type="text" class="form-control unit" name="unit[]" readonly value="<?=\backend\modules\Unit\models\unit::getUnitname($value->unit_id)?>">
     </td>
 	<td>
 		<div class="btn btn-danger btn-remove-line" onclick="removeline($(this))">ลบ</div>

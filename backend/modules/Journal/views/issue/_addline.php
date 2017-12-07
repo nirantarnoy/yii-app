@@ -1,4 +1,5 @@
 <?php
+$unit = \common\models\Unit::find()->all();
  ?>
  <tr>
  	<td></td>
@@ -18,7 +19,11 @@
 		<input type="text" class="form-control qty" name="qty[]" value="">
 	</td>
 	<td>
-		<input type="text" class="form-control unit" readonly name="unit[]" value="">
+		<select class="form-control unit" name="unit[]">
+			<?php foreach($unit as $value):?>
+				<option value="<?=$value->id?>"><?=$value->name?></option>
+			<?php endforeach;?>
+		</select>
 	</td>
 	<td>
 		<div class="btn btn-danger btn-remove-line" onclick="removeline($(this))">ลบ</div>

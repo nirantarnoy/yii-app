@@ -7,6 +7,7 @@ use kartik\date\DatePicker;
 /* @var $this yii\web\View */
 /* @var $model common\models\Journal */
 /* @var $form yii\widgets\ActiveForm */
+$unit = \common\models\Unit::find()->all();
 ?>
 
 <div class="journal-form">
@@ -108,8 +109,16 @@ use kartik\date\DatePicker;
                                             <input type="text" class="form-control qty" name="qty[]" value="<?=$value->qty;?>">
                                         </td>
                                          <td>
-                                          <?php $unit_id = \common\models\Item::getUnitid($value->chemical_id) ?>
-                                            <input type="text" class="form-control unit" name="unit[]" readonly value="<?=\backend\modules\Unit\models\unit::getUnitname($unit_id)?>">
+                                            <select class="form-control unit" name="unit[]">
+                                              <?php foreach($unit as $data):?>
+                                              <?php $select = '';
+                                                    if($data->id == $value->unit_id){
+                                                      $select  = 'selected';
+                                                    }
+                                              ?>
+                                                <option value="<?=$data->id?>" <?=$select?>><?=$data->name?></option>
+                                              <?php endforeach;?>
+                                            </select>
                                         </td>
                                         <td>
                                             <div class="btn btn-danger btn-remove-line" onclick="removeline($(this))">ลบ</div>
