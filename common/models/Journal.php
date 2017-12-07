@@ -77,7 +77,7 @@ class Journal extends \yii\db\ActiveRecord
     }
   }
   public static function getLastReturnNo(){
-    $model = Journal::find()->where(['journal_type'=>1])->andFilterWhere(['like','journal_no','RT'])->MAX('journal_no');
+    $model = Journal::find()->where(['journal_type'=>2])->andFilterWhere(['like','journal_no','RT'])->MAX('journal_no');
     if($model){
       $prefix = "RT".substr(date("Y"),2,2);
       $cnum = substr((string)$model,4,strlen($model));

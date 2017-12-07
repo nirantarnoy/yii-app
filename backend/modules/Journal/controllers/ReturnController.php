@@ -88,10 +88,12 @@ class ReturnController extends Controller
                         $modelline->return_qty = $return_qty[$i];
                         $modelline->save(false);
 
-                         Journal::updatestock($che_id[$i],$qty[$i],1); // issue
+                         Journal::updatestock($che_id[$i],$qty[$i],1); // return
                     }
                    
                 }
+                
+                 $this->checkReturn($model->issue_id); 
                  $session = Yii::$app->session;
                 $session->setFlash('success','บันทึกรายการเรียบรอ้ย');
                 return $this->redirect(['update', 'id' => $model->id]);
@@ -102,6 +104,24 @@ class ReturnController extends Controller
                 'runno' => $model->getLastReturnNo(),
                 'expendlist' => Json::encode($expendlist),
             ]);
+        }
+    }
+    public function checkReturn($journal_id){
+        $model_issue = \common\models\JournalLine::find()->where(['journal_id'=>$journal_id])->sum('qty');
+        $model_ref = \common\models\Journal::find()->where(['issue_id'=>$journal_id])->all();
+        $all_return = 0;
+
+        foreach($model_ref as $value){
+           $all_return = $all_return + \common\models\JournalLine::find()->where(['journal_id'=>$value->id])->sum('return_qty');
+        }
+
+
+        if($all_return >= $model_issue){
+            $model = Journal::find()->where(['id'=>$journal_id])->one();
+            if($model){
+                $model->status = 1;
+                $model->save(false);
+            }
         }
     }
 

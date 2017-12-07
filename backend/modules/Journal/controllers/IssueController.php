@@ -74,6 +74,7 @@ class IssueController extends Controller
             $unit = Yii::$app->request->post('unit');
             $model->created_at = time();
             $model->created_by = Yii::$app->user->identity->id;
+             $model->status = 0;
             $model->journal_type = 1;
             if($model->save()){
                 if(count($che_id)>0){
@@ -121,6 +122,7 @@ class IssueController extends Controller
              $unit = Yii::$app->request->post('unit');
             $model->updated_at = time();
             $model->updated_by = Yii::$app->user->identity->id;
+            $model->status = 0;
             if($model->save()){
                 if(count($che_id)>0){
                        \common\models\JournalLine::deleteAll(['journal_id'=>$id]);

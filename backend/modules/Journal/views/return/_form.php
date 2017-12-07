@@ -54,7 +54,7 @@ use yii\helpers\ArrayHelper;
             <div class="row">
               <div class="col-lg-3">
                   <?= $form->field($model, 'issue_id')->widget(Select2::className(),[
-                      'data'=> ArrayHelper::map(\common\models\Journal::find()->where(['like','journal_no','IS'])->all(),'id','journal_no'),
+                      'data'=> ArrayHelper::map(\common\models\Journal::find()->where(['like','journal_no','IS'])->andFilterWhere(['or',['!=','status',1],['!=','status',Null]])->all(),'id','journal_no'),
                       'options'=>[
                           'placeholder'=>'เลือกใบเบิก',
                           'onchange'=>'
