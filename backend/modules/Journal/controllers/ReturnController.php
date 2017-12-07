@@ -71,7 +71,8 @@ class ReturnController extends Controller
             $che_id = Yii::$app->request->post('chemical_id');
             $issue_type = Yii::$app->request->post('issue_type');
             $qty = Yii::$app->request->post('qty');
-             $return_qty = Yii::$app->request->post('return_qty');
+            $unit = Yii::$app->request->post('unit_id');
+            $return_qty = Yii::$app->request->post('return_qty');
             $model->created_at = time();
             $model->created_by = Yii::$app->user->identity->id;
              $model->journal_type = 2;
@@ -83,6 +84,7 @@ class ReturnController extends Controller
                         $modelline->chemical_id = $che_id[$i];
                         $modelline->issue_type = $issue_type[$i];
                         $modelline->qty = $qty[$i];
+                        $modelline->unit_id = $unit[$i];
                         $modelline->return_qty = $return_qty[$i];
                         $modelline->save(false);
 
@@ -118,6 +120,7 @@ class ReturnController extends Controller
             $che_id = Yii::$app->request->post('chemical_id');
             $issue_type = Yii::$app->request->post('issue_type');
             $qty = Yii::$app->request->post('qty');
+             $unit = Yii::$app->request->post('unit_id');
             $return_qty = Yii::$app->request->post('return_qty');
             $model->updated_at = time();
             $model->updated_by = Yii::$app->user->identity->id;
@@ -130,6 +133,7 @@ class ReturnController extends Controller
                         $modelline->chemical_id = $che_id[$i];
                         $modelline->issue_type = $issue_type[$i];
                         $modelline->qty = $qty[$i];
+                        $modelline->unit_id = $unit[$i];
                         $modelline->return_qty = $return_qty[$i];
                         $modelline->save(false);
                     }
