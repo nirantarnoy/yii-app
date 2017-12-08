@@ -52,6 +52,9 @@ if($to_date != '' && $from_date != '01-01-1970'){
  	<div class="col-lg-2">
  		<input type="submit" class="btn btn-success" style="margin-top: 25px;" value="ค้นหา">
  	</div>
+    <div class="col-lg-2">
+        
+    </div>
  	
  </div>
  </form>
@@ -59,6 +62,10 @@ if($to_date != '' && $from_date != '01-01-1970'){
  <div class="row">
  	<div class="col-lg-12">
  		<div class="panel panel-success">
+            <div class="panel-heading">
+                  <a href="<?=Url::to(['/Reports/issuereport/showreport','from_date'=>$fdate,'to_date'=>$tdate],true)?>" class="btn btn-default"><i class="fa fa-print"></i> พิมพ์รายงาน</a>
+            </div>
+          
  			<div class="panel-body">
  				<?= GridView::widget([
                     'dataProvider' => $dataProvider,
